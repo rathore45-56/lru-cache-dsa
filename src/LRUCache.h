@@ -1,0 +1,14 @@
+#ifndef LRU_CACHE_H
+#define LRU_CACHE_H
+
+#include <unordered_map>
+using namespace std;
+
+class LRUCache {
+public:
+    LRUCache(int capacity);
+    int get(int key);
+    void put(int key, int value);
+};
+
+#endif
