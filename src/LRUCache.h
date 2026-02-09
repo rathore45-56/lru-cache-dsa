@@ -5,6 +5,30 @@
 using namespace std;
 
 class LRUCache {
+    private:
+    struct Node{
+        Node *prev;
+        int key;
+        int value;
+        Node *next;
+
+        Node(int k, int v)
+    };
+
+    int capacity;
+    std::unordered_map<int,Node*>cache;
+    Node *head; // top Node
+    Node*tail;  // Last Node
+
+    void insertAthead(Node *node);
+    void moveNodetofront(Node *node);
+    void removeleastrecentlyusedNode();
+    void removeNode(Node *node);
+
+
+
+
+    }
 public:
     LRUCache(int capacity);
     int get(int key);
