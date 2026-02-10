@@ -19,11 +19,18 @@ void LRUCache::insertAthead(Node* node) {
 }
 void LRUCache::moveNodetofront(Node *node)
 {
-
+     removeNode(node);
+     insertAthead(node);
 }
 void LRUCache::removeleastrecentlyusedNode()
 {
-    
+    Node *lru=tail->prev;
+    if(lru==head)
+    return;
+    lru->prev->next=tail;
+    tail->prev=lru->prev;
+    cache.erase(lru->key);
+    delete lru;
 }
 void LRUCache::removeNode(Node *node)
 {
