@@ -23,7 +23,8 @@ class LRUCache {
     void insertAthead(Node *node);
     void moveNodetofront(Node *node);
     void removeleastrecentlyusedNode();
-    void moveNodetofront(Node *node);
+    void removeNode(Node *node);
+    
 
 public:
     LRUCache(int capacity);
