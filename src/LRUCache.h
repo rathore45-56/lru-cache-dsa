@@ -12,7 +12,7 @@ class LRUCache {
         int value;
         Node *next;
 
-        Node(int k, int v)
+        Node(int k, int v);
     };
 
     int capacity;
@@ -23,12 +23,8 @@ class LRUCache {
     void insertAthead(Node *node);
     void moveNodetofront(Node *node);
     void removeleastrecentlyusedNode();
-    void removeNode(Node *node);
+    void moveNodetofront(Node *node);
 
-
-
-
-    }
 public:
     LRUCache(int capacity);
     int get(int key);
