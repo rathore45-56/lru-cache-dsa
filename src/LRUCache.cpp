@@ -38,11 +38,36 @@ void LRUCache::removeNode(Node *node)
     node->next->prev=node->prev;
 }
 int LRUCache::get(int key) {
-    // TODO: implement
+    
+    if(cache.find(key)==cache.end())
     return -1;
+
+    Node *toget=cache[key];
+    moveNodetofront(toget);
+    int value1=toget->value;
+    return value1;
+
 }
 
 void LRUCache::put(int key, int value) {
-    // TODO: implement
+    if(cache.find(key)!=cache.end())
+    {
+        Node *existing=cache[key];
+        existing->value=value;
+        moveNodetofront(existing);
+    }
+    else
+    {
+        Node *new1= new Node(key,NULL);
+        cache[key]=new1;
+        new1->value=value;
+        insertAthead(new1);
+
+        if(cache.size()>capacity)
+        {
+            removeleastrecentlyusedNode();
+        }
+
+    }
 }
 
