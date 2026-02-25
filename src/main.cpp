@@ -14,5 +14,7 @@ int main(){
 
     cout<<cache.get(1)<<endl;
     cout<<cache.get(4)<<endl;
+    
+
    
 }
