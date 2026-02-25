@@ -28,8 +28,10 @@ class LRUCache {
 
 public:
     LRUCache(int capacity);
+    ~LRUCache();
     int get(int key);
     void put(int key, int value);
+   
 };
 
 #endif

@@ -1,8 +1,8 @@
 #include "LRUCache.h"
+#include <iostream>
 // Node Constructor
 LRUCache::Node::Node(int k,int v)
 : key(k),value(v),prev(nullptr),next(nullptr){};
-
 // LRUCache Constructor
 LRUCache::LRUCache(int capacity) : capacity(capacity)
 {
@@ -10,6 +10,19 @@ LRUCache::LRUCache(int capacity) : capacity(capacity)
     tail=new Node(-1,-1);
     head->next=tail;
     tail->prev=head;
+}
+// Node Destructor
+LRUCache::~LRUCache()
+{
+    cout << "Destructor called" << endl;
+    Node *current=head;
+    while(current!=nullptr)
+    {
+        Node *next=current->next;
+        delete current;
+        current=next;
+    }
+    
 }
 void LRUCache::insertAthead(Node* node) {
     node->next=head->next;
@@ -50,6 +63,7 @@ int LRUCache::get(int key) {
 }
 
 void LRUCache::put(int key, int value) {
+    if (capacity == 0) return;
     if(cache.find(key)!=cache.end())
     {
         Node *existing=cache[key];
