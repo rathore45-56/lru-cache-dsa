@@ -61,6 +61,22 @@ int LRUCache::get(int key) {
     return value1;
 
 }
+void LRUCache::printcachevalue(){
+
+    if(head->next==tail)
+    {
+        cout<<"Cache is Empty"<<endl;
+        return;
+    }
+    Node*curr= head;
+    while(curr->next!=nullptr && curr->next!=tail)
+    {
+        Node *temp=curr->next;
+        cout<<"current node key is "<< temp->key<<" and current node value is "<< temp->value<<endl;
+        curr=curr->next;
+    }
+   
+}
 
 void LRUCache::put(int key, int value) {
     if (capacity == 0) return;
